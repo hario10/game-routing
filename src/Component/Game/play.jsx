@@ -1,15 +1,18 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {Link} from 'react-router-dom';
 import './style.css';
 
 const Play = ({pilihanSaya, setScore, score}) => {
     const [pilihanKomputer, setPilihanKomputer] = useState('');
     const [result, setResult] = useState('');
+    const tempHasil = useRef();
 
     const random = () => {
         const pilihan = ['Lakik', 'Rama', 'Eko']
         setPilihanKomputer(pilihan[Math.floor(Math.random () * 3 )]);
     }
+
+    
 
     const hasil = () => {
         if(pilihanSaya === 'Lakik' && pilihanKomputer === 'Rama') {
@@ -35,13 +38,13 @@ const Play = ({pilihanSaya, setScore, score}) => {
             setScore(score+0);
         }
     }
-
+    tempHasil.current = hasil
     useEffect(() => {
         random();
     }, []);
 
     useEffect(() => {
-        hasil();
+        tempHasil.current();
     }, [pilihanKomputer])
     return (
         <>

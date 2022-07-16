@@ -40,5 +40,9 @@
   }, 
     "overrides": {
     "autoprefixer": "10.4.5"
-  }
+  }, 
+  "resolutions": {
+    "@typescript-eslint/eslint-plugin": "^4.4.0",
+    "@typescript-eslint/parser": "^4.4.0"
+}
 }
